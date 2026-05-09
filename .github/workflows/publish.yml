@@ -1,4 +1,4 @@
-name: Publish to GitHub Packages
+name: Publish
 
 on:
   push:
@@ -9,9 +9,11 @@ on:
 permissions:
   contents: read
   packages: write
+  id-token: write
 
 jobs:
-  publish:
+  publish-npm:
+    name: Publish to npmjs.com
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,8 +22,34 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Setup Node (for npm publish)
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@sylvester-francis'
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        run: bun run build
+
+      - name: Publish to npm
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-github-packages:
+    name: Publish to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - uses: actions/setup-node@v4
         with:
           node-version: '22'
           registry-url: 'https://npm.pkg.github.com'
@@ -33,7 +61,7 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Publish
+      - name: Publish to GitHub Packages
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

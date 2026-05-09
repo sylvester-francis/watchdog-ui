@@ -4,16 +4,17 @@ Design primitives for Watchdog and downstream consumers — Svelte 5 components 
 
 ## Install
 
+Published to both [npmjs.com](https://www.npmjs.com/package/@sylvester-francis/watchdog-ui) (default, no auth) and [GitHub Packages](https://github.com/sylvester-francis/watchdog-ui/pkgs/npm/watchdog-ui) (auth required).
+
 ```bash
 bun add @sylvester-francis/watchdog-ui
 # or
 npm install @sylvester-francis/watchdog-ui
 ```
 
-This package is published to GitHub Packages. To consume it, add the registry and authenticate:
+To pull from GitHub Packages instead (e.g. for in-org mirrors), add to `.npmrc`:
 
-```bash
-# .npmrc
+```
 @sylvester-francis:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
