@@ -1,0 +1,18 @@
+node_modules/
+.svelte-kit/
+dist/
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+bun.lockb
+
+# Build outputs
+build/
+.vite/
+*.tsbuildinfo
+
+# Coverage / test artifacts
+coverage/
+.nyc_output/
