@@ -77,6 +77,12 @@ const theme = createChartTheme(watchdogTokens);
 
 All primitives consume CSS variables — never hardcode colors. Theme-blind by design.
 
+## Storybook
+
+Live demo of every primitive with theme tokens applied: **[sylvester-francis.github.io/watchdog-ui](https://sylvester-francis.github.io/watchdog-ui/)**
+
+Run locally: `bun run storybook` (port 6006).
+
 ## License
 
 [AGPL-3.0](./LICENSE) © Sylvester Francis
