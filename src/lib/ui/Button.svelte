@@ -3,7 +3,7 @@
   import type { HTMLButtonAttributes } from 'svelte/elements';
 
   type Variant = 'primary' | 'secondary' | 'ghost' | 'destructive' | 'outline';
-  type Size = 'sm' | 'md' | 'lg';
+  type Size = 'xs' | 'sm' | 'md' | 'lg';
   type Tone = 'accent' | 'up' | 'warn' | 'down';
 
   interface Props extends Omit<HTMLButtonAttributes, 'type' | 'disabled' | 'onclick' | 'class'> {
@@ -43,6 +43,7 @@
   };
 
   const sizeClasses: Record<Size, string> = {
+    xs: 'px-1.5 py-1 text-xs rounded',
     sm: 'px-3 py-1 text-sm rounded',
     md: 'px-4 py-2 text-base rounded',
     lg: 'px-6 py-3 text-lg rounded-lg',
