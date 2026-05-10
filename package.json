@@ -16,8 +16,8 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "test": "vitest run",
     "test:watch": "vitest",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "storybook": "svelte-kit sync && storybook dev -p 6006",
+    "build-storybook": "svelte-kit sync && storybook build",
     "prepublishOnly": "bun run build"
   },
   "exports": {
