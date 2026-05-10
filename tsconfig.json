@@ -18,8 +18,22 @@
     "sourceMap": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"]
   },
+  "include": [
+    ".svelte-kit/ambient.d.ts",
+    ".svelte-kit/non-ambient.d.ts",
+    "src/lib/**/*.js",
+    "src/lib/**/*.ts",
+    "src/lib/**/*.svelte",
+    "src/test/**/*.ts",
+    "scripts/**/*.ts",
+    "vitest.config.ts",
+    "svelte.config.js"
+  ],
   "exclude": [
-    "src/stories/**",
-    "storybook-static/**"
+    "node_modules",
+    "src/stories",
+    "storybook-static",
+    "dist",
+    ".svelte-kit/output"
   ]
 }
