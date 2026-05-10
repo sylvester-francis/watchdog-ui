@@ -17,5 +17,9 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"]
-  }
+  },
+  "exclude": [
+    "src/stories/**",
+    "storybook-static/**"
+  ]
 }

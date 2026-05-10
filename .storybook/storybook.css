@@ -1,0 +1,56 @@
+/* Apply theme tokens to Storybook canvas */
+html.dark,
+.dark {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 1rem;
+}
+
+.sb-show-main.sb-main-padded {
+  background: var(--bg);
+}
+
+/* Replicate the Tailwind utility classes used by primitives */
+.bg-card { background-color: var(--bg-elev); }
+.bg-card-elevated { background-color: var(--bg-overlay); }
+.bg-background { background-color: var(--bg); }
+.bg-muted { background-color: var(--border); }
+.bg-accent { background-color: var(--accent); }
+.bg-destructive { background-color: var(--status-down); }
+
+.text-foreground { color: var(--text); }
+.text-muted-foreground { color: var(--text-muted); }
+.text-accent { color: var(--accent); }
+.text-accent-foreground { color: var(--text); }
+.text-destructive { color: var(--status-down); }
+.text-destructive-foreground { color: var(--text); }
+.text-success { color: var(--status-up); }
+.text-warning { color: var(--status-warn); }
+
+.border-border { border-color: var(--border-strong); }
+.border-destructive { border-color: var(--status-down); }
+
+.ui-pill[data-tone="neutral"] { background-color: rgb(from var(--text-muted) r g b / 0.10); color: var(--text-muted); border-color: var(--border-strong); }
+.ui-pill[data-tone="accent"]  { background-color: var(--accent-fade); color: var(--accent); border-color: rgb(from var(--accent) r g b / 0.3); }
+.ui-pill[data-tone="up"]      { background-color: rgb(from var(--status-up) r g b / 0.10); color: var(--status-up); border-color: rgb(from var(--status-up) r g b / 0.3); }
+.ui-pill[data-tone="down"]    { background-color: rgb(from var(--status-down) r g b / 0.10); color: var(--status-down); border-color: rgb(from var(--status-down) r g b / 0.3); }
+.ui-pill[data-tone="warn"]    { background-color: rgb(from var(--status-warn) r g b / 0.10); color: var(--status-warn); border-color: rgb(from var(--status-warn) r g b / 0.3); }
+
+.ui-status-dot[data-status="up"]      { background-color: var(--status-up); }
+.ui-status-dot[data-status="down"]    { background-color: var(--status-down); }
+.ui-status-dot[data-status="warn"]    { background-color: var(--status-warn); }
+.ui-status-dot[data-status="unknown"] { background-color: var(--text-muted); }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.animate-pulse-dot { animation: pulse-dot 2s infinite; }

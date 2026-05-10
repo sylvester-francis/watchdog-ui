@@ -16,6 +16,8 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "test": "vitest run",
     "test:watch": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "prepublishOnly": "bun run build"
   },
   "exports": {
@@ -43,6 +45,9 @@
     "svelte": "^5.0.0"
   },
   "devDependencies": {
+    "@storybook/addon-themes": "^10.3.6",
+    "@storybook/svelte": "^10.3.6",
+    "@storybook/svelte-vite": "^10.3.6",
     "@sveltejs/adapter-static": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/package": "^2.3.0",
@@ -52,6 +57,7 @@
     "@types/node": "^22.0.0",
     "happy-dom": "^15.0.0",
     "lucide-svelte": "^0.460.0",
+    "storybook": "^10.3.6",
     "svelte": "^5.0.0",
     "svelte-check": "^4.0.0",
     "svelte-preprocess": "^6.0.0",
