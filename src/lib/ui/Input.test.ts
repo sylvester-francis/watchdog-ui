@@ -1,6 +1,7 @@
 import { render } from '@testing-library/svelte';
 import { describe, it, expect } from 'vitest';
 import Input from './Input.svelte';
+import IconLeftHarness from './__test_harnesses__/InputIconLeft.svelte';
 
 describe('Input', () => {
   it('renders an input element', () => {
@@ -70,5 +71,53 @@ describe('Input', () => {
     const { container } = render(Input, { props: { type: 'number', value: 42 } });
     const input = container.querySelector('input') as HTMLInputElement;
     expect(input.value).toBe('42');
+  });
+
+  it('forwards aria-label via rest props', () => {
+    const { container } = render(Input, { props: { 'aria-label': 'Search' } as Record<string, unknown> });
+    expect(container.querySelector('input')!.getAttribute('aria-label')).toBe('Search');
+  });
+
+  it('forwards autocomplete via rest props', () => {
+    const { container } = render(Input, { props: { autocomplete: 'email' } as Record<string, unknown> });
+    expect(container.querySelector('input')!.getAttribute('autocomplete')).toBe('email');
+  });
+
+  it('forwards required attribute via rest props', () => {
+    const { container } = render(Input, { props: { required: true } as Record<string, unknown> });
+    expect(container.querySelector('input')!.hasAttribute('required')).toBe(true);
+  });
+
+  it('forwards minlength + maxlength via rest props', () => {
+    const { container } = render(Input, { props: { minlength: 3, maxlength: 50 } as Record<string, unknown> });
+    const input = container.querySelector('input')!;
+    expect(input.getAttribute('minlength')).toBe('3');
+    expect(input.getAttribute('maxlength')).toBe('50');
+  });
+
+  it('forwards pattern + inputmode via rest props', () => {
+    const { container } = render(Input, { props: { pattern: '[0-9]*', inputmode: 'numeric' } as Record<string, unknown> });
+    const input = container.querySelector('input')!;
+    expect(input.getAttribute('pattern')).toBe('[0-9]*');
+    expect(input.getAttribute('inputmode')).toBe('numeric');
+  });
+
+  it('controlled type prop wins over rest type', () => {
+    const { container } = render(Input, { props: { type: 'email' } });
+    expect(container.querySelector('input')!.getAttribute('type')).toBe('email');
+  });
+
+  it('renders iconLeft snippet inside a relative wrapper and pads input', () => {
+    const { container } = render(IconLeftHarness);
+    const wrapper = container.querySelector('.relative');
+    expect(wrapper).not.toBeNull();
+    expect(wrapper!.querySelector('[data-testid="icon-left"]')).not.toBeNull();
+    expect(container.querySelector('input')!.className).toContain('pl-9');
+  });
+
+  it('omits relative wrapper when iconLeft is not provided', () => {
+    const { container } = render(Input);
+    expect(container.querySelector('.relative')).toBeNull();
+    expect(container.querySelector('input')!.className).toContain('px-3');
   });
 });
