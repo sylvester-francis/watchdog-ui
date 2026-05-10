@@ -99,4 +99,29 @@ describe('Button', () => {
     expect(btn.className).toContain('bg-success/10');
     expect(btn.className).not.toContain('bg-accent ');
   });
+
+  it('forwards aria-label via rest props', () => {
+    render(Button, { props: { 'aria-label': 'Refresh' } as Record<string, unknown> });
+    expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Refresh');
+  });
+
+  it('forwards title via rest props', () => {
+    const { container } = render(Button, { props: { title: 'Click me' } as Record<string, unknown> });
+    expect(container.querySelector('button')!.getAttribute('title')).toBe('Click me');
+  });
+
+  it('forwards name via rest props', () => {
+    const { container } = render(Button, { props: { name: 'submit-btn' } as Record<string, unknown> });
+    expect(container.querySelector('button')!.getAttribute('name')).toBe('submit-btn');
+  });
+
+  it('forwards id via rest props', () => {
+    const { container } = render(Button, { props: { id: 'my-btn' } as Record<string, unknown> });
+    expect(container.querySelector('button')!.id).toBe('my-btn');
+  });
+
+  it('controlled type prop wins over rest type', () => {
+    const { container } = render(Button, { props: { type: 'submit', tone: 'up' } });
+    expect(container.querySelector('button')!.getAttribute('type')).toBe('submit');
+  });
 });

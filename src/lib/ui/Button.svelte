@@ -1,11 +1,12 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import type { HTMLButtonAttributes } from 'svelte/elements';
 
   type Variant = 'primary' | 'secondary' | 'ghost' | 'destructive' | 'outline';
   type Size = 'sm' | 'md' | 'lg';
   type Tone = 'accent' | 'up' | 'warn' | 'down';
 
-  interface Props {
+  interface Props extends Omit<HTMLButtonAttributes, 'type' | 'disabled' | 'onclick' | 'class'> {
     variant?: Variant;
     size?: Size;
     tone?: Tone;
@@ -15,7 +16,16 @@
     children?: Snippet;
   }
 
-  let { variant = 'primary', size = 'md', tone, type = 'button', disabled = false, onclick, children }: Props = $props();
+  let {
+    variant = 'primary',
+    size = 'md',
+    tone,
+    type = 'button',
+    disabled = false,
+    onclick,
+    children,
+    ...rest
+  }: Props = $props();
 
   const variantClasses: Record<Variant, string> = {
     primary: 'bg-accent text-accent-foreground hover:opacity-90',
@@ -40,6 +50,7 @@
 </script>
 
 <button
+  {...rest}
   {type}
   {disabled}
   {onclick}
