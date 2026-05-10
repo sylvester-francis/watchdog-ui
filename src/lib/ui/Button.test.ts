@@ -124,4 +124,16 @@ describe('Button', () => {
     const { container } = render(Button, { props: { type: 'submit', tone: 'up' } });
     expect(container.querySelector('button')!.getAttribute('type')).toBe('submit');
   });
+
+  it('applies size xs', () => {
+    const { container } = render(Button, { props: { size: 'xs' } });
+    const btn = container.querySelector('button')!;
+    expect(btn.className).toContain('text-xs');
+    expect(btn.className).toContain('px-1.5');
+  });
+
+  it('reflects size xs onto data-size attribute', () => {
+    const { container } = render(Button, { props: { size: 'xs' } });
+    expect(container.querySelector('button')!.getAttribute('data-size')).toBe('xs');
+  });
 });

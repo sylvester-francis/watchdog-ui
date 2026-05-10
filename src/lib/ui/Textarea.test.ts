@@ -37,4 +37,37 @@ describe('Textarea', () => {
     const { container } = render(Textarea, { props: { disabled: true } });
     expect(container.querySelector('textarea')).toBeDisabled();
   });
+
+  it('forwards aria-label via rest props', () => {
+    const { container } = render(Textarea, { props: { 'aria-label': 'Description' } as Record<string, unknown> });
+    expect(container.querySelector('textarea')!.getAttribute('aria-label')).toBe('Description');
+  });
+
+  it('forwards required attribute via rest props', () => {
+    const { container } = render(Textarea, { props: { required: true } as Record<string, unknown> });
+    expect(container.querySelector('textarea')!.hasAttribute('required')).toBe(true);
+  });
+
+  it('forwards maxlength via rest props', () => {
+    const { container } = render(Textarea, { props: { maxlength: 1000 } as Record<string, unknown> });
+    expect(container.querySelector('textarea')!.getAttribute('maxlength')).toBe('1000');
+  });
+
+  it('forwards minlength via rest props', () => {
+    const { container } = render(Textarea, { props: { minlength: 10 } as Record<string, unknown> });
+    expect(container.querySelector('textarea')!.getAttribute('minlength')).toBe('10');
+  });
+
+  it('forwards autocomplete + name + id via rest props', () => {
+    const { container } = render(Textarea, { props: { autocomplete: 'off', name: 'use_case', id: 'use_case' } as Record<string, unknown> });
+    const ta = container.querySelector('textarea')!;
+    expect(ta.getAttribute('autocomplete')).toBe('off');
+    expect(ta.getAttribute('name')).toBe('use_case');
+    expect(ta.id).toBe('use_case');
+  });
+
+  it('controlled rows prop wins over rest rows', () => {
+    const { container } = render(Textarea, { props: { rows: 5 } });
+    expect(container.querySelector('textarea')!.getAttribute('rows')).toBe('5');
+  });
 });
