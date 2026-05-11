@@ -35,4 +35,26 @@ describe('Tabs', () => {
     await fireEvent.click(screen.getAllByRole('tab')[1]);
     expect(changed).toBe('b');
   });
+
+  it('defaults to variant=underline (border-b on active)', () => {
+    const options = [{ value: 'a', label: 'A' }];
+    const { container } = render(Tabs, { props: { options, value: 'a' } });
+    expect(container.querySelector('[role="tablist"]')!.getAttribute('data-variant')).toBe('underline');
+    expect(container.querySelector('button[aria-selected="true"]')!.className).toContain('border-b-2');
+  });
+
+  it('variant=pill renders pill-style active tab (no border-b-2)', () => {
+    const options = [{ value: 'a', label: 'A' }];
+    const { container } = render(Tabs, { props: { options, value: 'a', variant: 'pill' } });
+    expect(container.querySelector('[role="tablist"]')!.getAttribute('data-variant')).toBe('pill');
+    const activeBtn = container.querySelector('button[aria-selected="true"]')!;
+    expect(activeBtn.className).not.toContain('border-b-2');
+    expect(activeBtn.className).toContain('bg-foreground/[0.08]');
+  });
+
+  it('variant=pill tablist has no bottom border', () => {
+    const options = [{ value: 'a', label: 'A' }];
+    const { container } = render(Tabs, { props: { options, value: 'a', variant: 'pill' } });
+    expect(container.querySelector('[role="tablist"]')!.className).not.toContain('border-b');
+  });
 });

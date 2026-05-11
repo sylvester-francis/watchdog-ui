@@ -2,8 +2,10 @@ import { describe, it, expect } from 'vitest';
 import * as ui from './index';
 
 const expected = [
+  'Alert',
   'Button',
   'Input',
+  'LinkButton',
   'Textarea',
   'Select',
   'Checkbox',
