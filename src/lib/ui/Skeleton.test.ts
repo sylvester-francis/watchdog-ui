@@ -43,4 +43,26 @@ describe('Skeleton', () => {
     const el = container.querySelector('div') as HTMLElement;
     expect(el.style.height).toBe('500px');
   });
+
+  it('defaults emphasis to "primary" (full bg-muted)', () => {
+    const { container } = render(Skeleton);
+    const el = container.querySelector('div')!;
+    expect(el.getAttribute('data-emphasis')).toBe('primary');
+    expect(el.className).toContain('bg-muted');
+    expect(el.className).not.toContain('bg-muted/');
+  });
+
+  it('reflects emphasis="secondary" with reduced opacity', () => {
+    const { container } = render(Skeleton, { props: { emphasis: 'secondary' } });
+    const el = container.querySelector('div')!;
+    expect(el.getAttribute('data-emphasis')).toBe('secondary');
+    expect(el.className).toContain('bg-muted/60');
+  });
+
+  it('reflects emphasis="tertiary" with low opacity', () => {
+    const { container } = render(Skeleton, { props: { emphasis: 'tertiary' } });
+    const el = container.querySelector('div')!;
+    expect(el.getAttribute('data-emphasis')).toBe('tertiary');
+    expect(el.className).toContain('bg-muted/30');
+  });
 });
