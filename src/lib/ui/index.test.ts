@@ -24,6 +24,7 @@ const expected = [
   'Pill',
   'StatBlock',
   'SectionHeader',
+  'PageHero',
   'Sparkline',
   'ChartFrame',
   'createChartTheme',
