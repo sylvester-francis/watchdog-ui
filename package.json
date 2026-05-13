@@ -1,6 +1,6 @@
 {
   "name": "@sylvester-francis/watchdog-ui",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Design primitives for Watchdog and downstream consumers — Svelte 5 components driven by typed design tokens.",
   "license": "AGPL-3.0",
   "author": "Sylvester Francis",
