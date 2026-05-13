@@ -23,6 +23,8 @@ const expected = [
   'StatusPip',
   'Pill',
   'StatBlock',
+  'StatCell',
+  'StatGrid',
   'SectionHeader',
   'PageHero',
   'Sparkline',
