@@ -27,6 +27,7 @@ const expected = [
   'StatGrid',
   'SectionHeader',
   'PageHero',
+  'InlineEditRow',
   'Sparkline',
   'ChartFrame',
   'createChartTheme',
