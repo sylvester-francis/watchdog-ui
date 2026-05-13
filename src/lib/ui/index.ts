@@ -23,6 +23,7 @@ export { default as StatCell } from './StatCell.svelte';
 export { default as StatGrid } from './StatGrid.svelte';
 export { default as SectionHeader } from './SectionHeader.svelte';
 export { default as PageHero } from './PageHero.svelte';
+export { default as InlineEditRow } from './InlineEditRow.svelte';
 export { default as Sparkline } from './Sparkline.svelte';
 export { default as ChartFrame } from './ChartFrame.svelte';
 export { createChartTheme } from './chart-theme';
