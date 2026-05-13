@@ -19,6 +19,8 @@ export { default as StatusDot } from './StatusDot.svelte';
 export { default as StatusPip } from './StatusPip.svelte';
 export { default as Pill } from './Pill.svelte';
 export { default as StatBlock } from './StatBlock.svelte';
+export { default as StatCell } from './StatCell.svelte';
+export { default as StatGrid } from './StatGrid.svelte';
 export { default as SectionHeader } from './SectionHeader.svelte';
 export { default as PageHero } from './PageHero.svelte';
 export { default as Sparkline } from './Sparkline.svelte';
