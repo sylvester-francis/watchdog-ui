@@ -44,9 +44,12 @@
 <svelte:window onkeydown={handleKeydown} />
 
 {#if open}
+  <!-- Overlay click closes the modal as a mouse convenience; keyboard users close via Escape (handled at window level above). The dialog itself is programmatically focusable (tabindex=-1) so the focus trap can land on it. -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
   <div
     role="dialog"
     aria-modal="true"
+    tabindex={-1}
     bind:this={dialogEl}
     onclick={handleOverlayClick}
     class="fixed inset-0 z-50 grid place-items-center bg-black/50 backdrop-blur-sm"

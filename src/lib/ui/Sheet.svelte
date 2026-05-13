@@ -45,7 +45,10 @@
 <svelte:window onkeydown={handleKeydown} />
 
 {#if open}
-  <div data-sheet-overlay onclick={() => onclose?.()} class="fixed inset-0 z-40 bg-black/40"></div>
+  <!-- Decorative overlay; mouse-click closes, keyboard close is Escape at window level. -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <div data-sheet-overlay aria-hidden="true" onclick={() => onclose?.()} class="fixed inset-0 z-40 bg-black/40"></div>
   <div
     role="dialog"
     aria-modal="true"
