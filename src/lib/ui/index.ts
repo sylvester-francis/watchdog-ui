@@ -20,6 +20,7 @@ export { default as StatusPip } from './StatusPip.svelte';
 export { default as Pill } from './Pill.svelte';
 export { default as StatBlock } from './StatBlock.svelte';
 export { default as SectionHeader } from './SectionHeader.svelte';
+export { default as PageHero } from './PageHero.svelte';
 export { default as Sparkline } from './Sparkline.svelte';
 export { default as ChartFrame } from './ChartFrame.svelte';
 export { createChartTheme } from './chart-theme';
