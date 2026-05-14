@@ -23,8 +23,10 @@ To pull from GitHub Packages instead (e.g. for in-org mirrors), add to `.npmrc`:
 
 ```svelte
 <script lang="ts">
-  import { Button, Pill, StatusDot, Modal, FormField, Input } from '@sylvester-francis/watchdog-ui';
+  import { Button, StatusPip, Modal, FormField, Input } from '@sylvester-francis/watchdog-ui';
 </script>
+
+<StatusPip status="up" label="Operational" />
 
 <Button variant="primary" onclick={() => (open = true)}>Create</Button>
 
@@ -44,7 +46,8 @@ The package ships a `Tokens` interface and a default `watchdogTokens` value. Con
 ```ts
 import { type Tokens, watchdogTokens, watchdogTokensToCSS } from '@sylvester-francis/watchdog-ui/tokens';
 
-// Default values:
+// Default values (this is the Watchdog CE palette — supply your own Tokens
+// object to theme the primitives differently):
 console.log(watchdogTokens.color.accent); // '#3b82f6'
 
 // Generate CSS to inject into your app:
