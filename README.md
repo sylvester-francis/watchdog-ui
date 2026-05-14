@@ -65,17 +65,29 @@ const theme = createChartTheme(watchdogTokens);
 
 | Component | Purpose |
 | --- | --- |
-| `Button` | Action button with variants (primary/secondary/ghost/destructive/outline) + tones (accent/up/warn/down) |
+| `Button`, `LinkButton` | Action button (variants primary/secondary/ghost/destructive/outline) and anchor-styled-as-button equivalent; both support tones (accent/up/warn/down) |
 | `Input`, `Textarea`, `Select`, `Checkbox` | Form controls |
 | `FormField` | Label + control + error wrapper |
 | `Modal` | Centered modal with focus trap, ESC, overlay click, sizes (sm/md/lg/xl) |
 | `Sheet` | Side/bottom slide-over with sizes |
 | `BottomSheet` | Mobile bottom sheet with drag-to-dismiss + two heights |
-| `Pill`, `StatusBadge`, `StatusDot` | Status indicators |
-| `StatBlock`, `Sparkline`, `ChartFrame` | Data viz primitives |
+| `Pill` | Decorative chip (legacy — newer Console-aesthetic consumers should prefer `StatusPip`) |
+| `StatusPip` | 1.5px circular status indicator paired with uppercase mono label — the Console-aesthetic primary status primitive |
+| `StatusBadge`, `StatusDot` | Larger status indicators (badges + dots) |
+| `StatBlock` | Self-contained stat card with label / value / trend |
+| `StatGrid` + `StatCell` | Hairline-divided horizontal stat row (Console aesthetic — `gap-px bg-border` between cells) |
+| `Sparkline`, `ChartFrame` | Data-viz primitives; pair with `createChartTheme` for theme-aware Chart.js options |
+| `PageHero` | Page header with optional eyebrow, title, breadcrumb, and actions |
+| `SectionHeader` | Section heading row with hairline bottom-border and optional action slot |
+| `InlineEditRow` | Display row that collapses into an edit form on click (used for settings username/password etc.) |
+| `Alert` | Inline alert banner with severity tones |
 | `Card`, `Tabs`, `Skeleton`, `EmptyState`, `Tooltip` | Layout helpers |
 
 All primitives consume CSS variables — never hardcode colors. Theme-blind by design.
+
+### Console aesthetic primitives (0.1.6–0.2.0)
+
+Versions 0.1.6 through 0.2.0 added a Console set used by both Watchdog consumers for an enterprise-modern "Linear/Honeycomb-inspired" look: hairline-divided stat rows (`StatGrid` + `StatCell`), 1.5px status pips (`StatusPip`) instead of colored chip Pills, hero headers with breadcrumb (`PageHero`), section headings with bottom border (`SectionHeader`), and inline-edit list rows (`InlineEditRow`). New code should prefer the Console primitives; older `Pill` / chip-style calls remain supported for backward compatibility.
 
 ## Storybook
 
